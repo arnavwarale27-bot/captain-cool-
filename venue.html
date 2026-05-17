@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Venue Analytics | Wankhede Stadium</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Barlow+Condensed:wght@400;600;700&amp;family=Hanken+Grotesk:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#081425",
+                        "on-primary-container": "#5c0008",
+                        "on-tertiary": "#3a3000",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed": "#0d1c32",
+                        "primary-fixed": "#ffdad7",
+                        "secondary": "#b9c7e4",
+                        "on-secondary-fixed-variant": "#39475f",
+                        "surface-container": "#152031",
+                        "inverse-surface": "#d8e3fb",
+                        "on-tertiary-fixed-variant": "#544600",
+                        "on-error": "#690005",
+                        "primary-fixed-dim": "#ffb3ae",
+                        "on-tertiary-container": "#4c3f00",
+                        "surface-container-lowest": "#040e1f",
+                        "on-background": "#d8e3fb",
+                        "surface-container-highest": "#2a3548",
+                        "background": "#081425",
+                        "secondary-fixed": "#d6e3ff",
+                        "inverse-on-surface": "#263143",
+                        "primary-container": "#ff5351",
+                        "tertiary-fixed-dim": "#e9c400",
+                        "surface-container-low": "#111c2d",
+                        "outline": "#ab8886",
+                        "surface-variant": "#2a3548",
+                        "surface-container-high": "#1f2a3c",
+                        "on-secondary-container": "#abb9d6",
+                        "tertiary": "#e9c400",
+                        "error-container": "#93000a",
+                        "tertiary-fixed": "#ffe16d",
+                        "primary": "#ffb3ae",
+                        "on-primary": "#68000b",
+                        "secondary-container": "#3c4962",
+                        "inverse-primary": "#bb1522",
+                        "surface-dim": "#081425",
+                        "on-surface-variant": "#e4bdba",
+                        "surface-bright": "#2f3a4c",
+                        "on-secondary": "#233148",
+                        "on-tertiary-fixed": "#221b00",
+                        "surface-tint": "#ffb3ae",
+                        "on-surface": "#d8e3fb",
+                        "on-primary-fixed": "#410004",
+                        "secondary-fixed-dim": "#b9c7e4",
+                        "tertiary-container": "#c9a900",
+                        "outline-variant": "#5b403e",
+                        "on-primary-fixed-variant": "#930014",
+                        "on-error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "container-max": "1440px",
+                        "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Hanken Grotesk"],
+                        "display-xl": ["Anton"],
+                        "headline-lg": ["Anton"],
+                        "stat-md": ["Barlow Condensed"],
+                        "headline-lg-mobile": ["Anton"],
+                        "label-caps": ["Barlow Condensed"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-xl": ["72px", {"lineHeight": "80px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "headline-lg": ["40px", {"lineHeight": "44px", "letterSpacing": "0.03em", "fontWeight": "400"}],
+                        "stat-md": ["24px", {"lineHeight": "28px", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "36px", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-header {
+            background: rgba(21, 32, 49, 0.7);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .stadium-canvas {
+            background: radial-gradient(circle at center, #1f2a3c 0%, #081425 100%);
+        }
+        .agentic-glow-red { box-shadow: 0 0 20px rgba(255, 83, 81, 0.2); }
+        .agentic-glow-gold { box-shadow: 0 0 20px rgba(233, 196, 0, 0.2); }
+        
+        .toggle-switch-shadow {
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 z-50 w-full bg-surface-container flex justify-between items-center px-margin-mobile h-16 border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<button class="hover:bg-surface-bright/20 p-2 rounded-full transition-transform active:scale-95">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile italic tracking-tighter text-inverse-primary">CAPTAIN COOL</h1>
+</div>
+<div class="hidden md:flex items-center gap-6">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Venue Analytics</span>
+<div class="h-4 w-[1px] bg-outline-variant"></div>
+<button class="flex items-center gap-2 bg-primary-container text-on-primary-container px-4 py-2 rounded-lg font-label-caps text-label-caps uppercase active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+                Back to Console
+            </button>
+</div>
+<button class="material-symbols-outlined text-primary p-2">bolt</button>
+</header>
+<main class="pt-20 pb-24 px-margin-mobile max-w-container-max mx-auto">
+<!-- Stadium Header Section -->
+<section class="glass-header rounded-xl p-6 mb-gutter relative overflow-hidden flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+<div class="z-10">
+<div class="flex items-center gap-2 mb-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-primary uppercase">Current Match Venue</span>
+</div>
+<h2 class="font-display-xl text-4xl md:text-6xl text-on-surface uppercase leading-none">Wankhede Stadium</h2>
+<p class="font-label-caps text-label-caps text-secondary tracking-widest mt-1">MUMBAI, MAHARASHTRA • INDIA</p>
+</div>
+<!-- Weather Widget -->
+<div class="z-10 bg-surface-container-high/60 backdrop-blur-md p-4 rounded-lg border border-outline-variant/30 flex items-center gap-8 min-w-[300px]">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-tertiary text-3xl">partly_cloudy_day</span>
+<span class="font-stat-md text-stat-md mt-1">31°C</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant">TEMP</span>
+</div>
+<div class="h-10 w-[1px] bg-outline-variant/30"></div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-secondary text-3xl">humidity_mid</span>
+<span class="font-stat-md text-stat-md mt-1">68%</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant">HUMIDITY</span>
+</div>
+<div class="h-10 w-[1px] bg-outline-variant/30"></div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-error text-3xl">water_drop</span>
+<span class="font-stat-md text-stat-md mt-1">HIGH</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant text-error">DEW RISK</span>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- 3D Stadium Layout & Dimensions -->
+<div class="lg:col-span-8 bg-surface-container-low rounded-xl border border-outline-variant p-6 stadium-canvas flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant tracking-widest">FIELD GEOMETRY &amp; BOUNDARIES</h3>
+<span class="bg-surface-container-highest px-3 py-1 text-[10px] rounded font-label-caps text-on-surface">SCALE: 1:1000</span>
+</div>
+<div class="flex-grow flex items-center justify-center relative py-12">
+<!-- Stylized Pitch & Ground -->
+<div class="w-64 h-64 md:w-80 md:h-80 rounded-full border-2 border-dashed border-outline-variant/50 flex items-center justify-center relative">
+<!-- Pitch -->
+<div class="w-12 h-32 bg-[#4a3a2a] rounded-sm border border-tertiary/40 shadow-inner rotate-12 flex flex-col justify-between p-1">
+<div class="w-full h-[2px] bg-white/20"></div>
+<div class="w-full h-[2px] bg-white/20"></div>
+</div>
+<!-- Boundary Callouts -->
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 flex flex-col items-center">
+<span class="font-stat-md text-on-surface">74m</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">Straight</span>
+<div class="w-[1px] h-6 bg-primary mt-1"></div>
+</div>
+<div class="absolute top-1/2 -left-12 -translate-y-1/2 flex flex-row items-center gap-2">
+<div class="w-6 h-[1px] bg-primary"></div>
+<div class="flex flex-col items-end">
+<span class="font-stat-md text-on-surface">63m</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">Off-side</span>
+</div>
+</div>
+<div class="absolute top-1/2 -right-12 -translate-y-1/2 flex flex-row items-center gap-2">
+<div class="flex flex-col items-start">
+<span class="font-stat-md text-on-surface">66m</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">Leg-side</span>
+</div>
+<div class="w-6 h-[1px] bg-primary"></div>
+</div>
+<div class="absolute -bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center">
+<div class="w-[1px] h-6 bg-primary mb-1"></div>
+<span class="font-stat-md text-on-surface">69m</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">Long-On</span>
+</div>
+</div>
+<!-- Atmospheric Visual Overlay -->
+<div class="absolute top-0 right-0 p-4">
+<img class="w-32 h-32 object-cover rounded-lg border border-outline-variant grayscale opacity-40 mix-blend-overlay" data-alt="A wide angle aerial shot of a professional cricket stadium at night under bright floodlights with a packed audience. The stadium is illuminated in cinematic blue and white lights, capturing the high-stakes sports broadcast atmosphere of the Indian Premier League. The mood is intense and professional, with sharp architectural lines of the grandstands visible against a dark Mumbai sky." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACpg8Se6IuAMdCGu73JuvOVbiLvyd-bHBb7ZWbSqUUAQjSUIbrB3rh3HZH_HOmUlROit77Um7b6cCUP7qKc9M-rE60QgXdMIjUlHlwpl8FzPUtriFe-u2K2rzOLe2WddDARudJSlakhXopItLgcaGvCVIMpb3d4Xrq2_jJtH43-p1HyxhOU6klDpq-uz8ZBh741QJU6PxfV-PZ1d-1i0wM-uQRnvg8lfj3J1lg8eBQGYNWk1I7BUeQy7-Jab9JMDKo7RD10DRQSFI"/>
+</div>
+</div>
+</div>
+<!-- Pitch Report & Toss Advantage -->
+<div class="lg:col-span-4 flex flex-col gap-gutter">
+<!-- Pitch Report Card -->
+<div class="bg-surface-container rounded-xl border-l-4 border-tertiary p-6 agentic-glow-gold">
+<h3 class="font-label-caps text-label-caps text-tertiary mb-4 tracking-widest uppercase">Pitch Report</h3>
+<div class="flex items-center gap-4 mb-6">
+<div class="bg-tertiary/10 p-3 rounded-lg border border-tertiary/30">
+<span class="material-symbols-outlined text-tertiary text-4xl">texture</span>
+</div>
+<div>
+<span class="font-stat-md text-stat-md text-on-surface">FLAT TRACK</span>
+<p class="font-body-md text-sm text-on-surface-variant">True bounce, high value for shots.</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-high p-4 rounded-lg">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase block mb-1">Avg 1st Innings</span>
+<span class="font-stat-md text-stat-md text-on-surface">185</span>
+</div>
+<div class="bg-surface-container-high p-4 rounded-lg">
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase block mb-1">Bat First Win%</span>
+<span class="font-stat-md text-stat-md text-primary">45%</span>
+</div>
+</div>
+</div>
+<!-- Toss Advantage Toggle Card -->
+<div class="bg-surface-container rounded-xl border border-outline-variant p-6">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-6 tracking-widest uppercase">Toss Advantage</h3>
+<div class="flex items-center justify-between p-1 bg-surface-container-low rounded-full border border-outline-variant toggle-switch-shadow mb-6">
+<button class="flex-1 py-2 rounded-full font-label-caps text-label-caps uppercase transition-all duration-200 bg-tertiary text-on-tertiary shadow-lg" id="batFirstBtn" onclick="toggleToss('bat')">Bat First</button>
+<button class="flex-1 py-2 rounded-full font-label-caps text-label-caps uppercase transition-all duration-200 text-on-surface-variant hover:text-on-surface" id="bowlFirstBtn" onclick="toggleToss('bowl')">Bowl First</button>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-sm font-body-md">Win Probability</span>
+<span class="font-stat-md text-tertiary" id="winProb">55%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-tertiary h-full transition-all duration-500" id="winBar" style="width: 55%"></div>
+</div>
+<p class="text-xs text-on-surface-variant italic" id="tossDetail">Historical data suggests chasing is preferred due to heavy dew during evening games at Wankhede.</p>
+</div>
+</div>
+</div>
+<!-- Key Matchups Section -->
+<div class="lg:col-span-12">
+<h3 class="font-headline-lg-mobile text-2xl text-on-surface mb-6 uppercase border-l-4 border-primary pl-4">Key Matchups at Wankhede</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Batter Card 1 -->
+<div class="bg-surface-container-high rounded-lg p-4 border border-outline-variant hover:border-primary transition-colors group">
+<div class="relative mb-4">
+<img class="w-full h-32 object-cover rounded-lg filter grayscale group-hover:grayscale-0 transition-all" data-alt="A professional cricket batter in a dynamic action pose, wearing a high-performance red and navy blue sports jersey. The setting is a dark, atmospheric studio with sharp rim lighting in vibrant red and gold tones. The style is hyper-realistic sports photography with a cinematic high-contrast look, emphasizing athletic intensity and technical precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmrtdWm5KauP5SSzf0xgUwPXQ-JTgNqYG8Gfo1HuXm6dlUtzZ7s4KnrBoT5hQhHifVXRlGmdIBeTSZyUHFqzbnmTBYbH_samaqiSkwVgETi52i5oumW2Pdbaf9DRYtFJvHUr46YLEF682k1YO7563c0ADOXqk-BcFGwNhqGRtEbUDc9Nt1uvYtL5LkwL457H-_tOuFtLbosTy5jpNEPpXJP1_rxomSbq4WYMnIm_83RGeo1DFORyvQs0TtdlqVTkNPx2HEq94Zhj4"/>
+<span class="absolute top-2 right-2 bg-primary text-on-primary px-2 py-0.5 rounded text-[10px] font-label-caps">TOP BATTER</span>
+</div>
+<h4 class="font-stat-md text-stat-md text-on-surface">R. SHARMA</h4>
+<div class="flex justify-between text-on-surface-variant text-xs mt-2 font-label-caps">
+<span>AVG: 42.5</span>
+<span>SR: 154.2</span>
+</div>
+</div>
+<!-- Batter Card 2 -->
+<div class="bg-surface-container-high rounded-lg p-4 border border-outline-variant hover:border-primary transition-colors group">
+<div class="relative mb-4">
+<img class="w-full h-32 object-cover rounded-lg filter grayscale group-hover:grayscale-0 transition-all" data-alt="Close up of a professional cricket player's hands gripping a high-quality willow bat, wearing white leather gloves with team colors. The lighting is dramatic and low-key, featuring a moody navy background with subtle gold particles floating in the air. The overall visual style is premium and analytical, focusing on the equipment's texture and the athlete's grip." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8oINArLRG3MR7xhDw2Xq5EDla1cck59znOu7bduq-zt1Ki2IaGMgkRHnNvFWv7hobvUfwh7iBONZM8Y91ZQ-R-8k-JdEj-vikuv1p7TvJgujr9_jQzFk1xg3jPfjEdvnMXVuqmX2gYKgBQNf5w36Smswf64br8Psl2pOMKtfCMLLFYqhbLGsjxUVlzUWo7FwyrsjGeCXiVngfkzCpZ0JHxkHIlZBQbpA9GjYAk3X0eK_USJ36sE7sKjltWz3yizV7_9BTEWUSvic"/>
+<span class="absolute top-2 right-2 bg-primary text-on-primary px-2 py-0.5 rounded text-[10px] font-label-caps">STRIKE ACE</span>
+</div>
+<h4 class="font-stat-md text-stat-md text-on-surface">S. YADAV</h4>
+<div class="flex justify-between text-on-surface-variant text-xs mt-2 font-label-caps">
+<span>AVG: 38.2</span>
+<span>SR: 172.8</span>
+</div>
+</div>
+<!-- Bowler Card 1 -->
+<div class="bg-surface-container-high rounded-lg p-4 border border-outline-variant hover:border-tertiary transition-colors group">
+<div class="relative mb-4">
+<img class="w-full h-32 object-cover rounded-lg filter grayscale group-hover:grayscale-0 transition-all" data-alt="A fast bowler in mid-stride, captured with high-speed photography to show the intensity of the delivery. The player is dressed in a professional navy blue and gold cricket kit. The background is a dark, stadium-like environment with glowing emissive lights and sharp focus on the ball leaving the hand. The mood is high-octane and precise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVMd3dJ_O4lqq6fqssDIGp-W5XramKl084e1NHqq1MRj7JIoQLHRcA5T8sD5MBmUVFhRpyGIQkBmOPzO-M6WCiVkcRZAddWZdsOhb-q9csqsfX8CEuS6X32eANtqDGi2EdWUHiXIV2qUy9iCv5KelOySj3g9JJ3pVwhnhhj-v1feS7gad7NjSGscBkhO6mhc6KKTyjoUKGEl3FONdtE_ogiFZxamBxMf9o0Dv4Uc-BkdphvvS42wiDnx0c0mJiCw_hI_AjWKvexwM"/>
+<span class="absolute top-2 right-2 bg-tertiary text-on-tertiary px-2 py-0.5 rounded text-[10px] font-label-caps">TOP BOWLER</span>
+</div>
+<h4 class="font-stat-md text-stat-md text-on-surface">J. BUMRAH</h4>
+<div class="flex justify-between text-on-surface-variant text-xs mt-2 font-label-caps">
+<span>ECON: 6.8</span>
+<span>WKT: 24</span>
+</div>
+</div>
+<!-- Bowler Card 2 -->
+<div class="bg-surface-container-high rounded-lg p-4 border border-outline-variant hover:border-tertiary transition-colors group">
+<div class="relative mb-4">
+<img class="w-full h-32 object-cover rounded-lg filter grayscale group-hover:grayscale-0 transition-all" data-alt="A macro shot of a red leather cricket ball with prominent white stitching, resting on a dark, reflective surface that mirrors the stadium's overhead floodlights. The lighting uses deep blues and sharp amber highlights, creating a sense of anticipation and tactical focus. The image style is sharp, clean, and technologically advanced, mirroring a professional sports broadcast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMLPpIUi1ReOBzvVVPgiz30I56n4VMkC-0ava9jJMnwof9RF_TBOcsg-f6ce4Q-E0MyEbU43YLkPQL07DHnY1zM5cd87ubDy1J8e1X8ZBhl53s4mLi0g8x3NpWFf2jpLf0-62VWywdcUo0RUSu-s8r7Brjrif7f2PZCCCqZ8u8lIpXcPi_yJxBGK7d-WwIK9Tb5UMWTjYUX1cvu8DtbcDxg3V4EcmkZx8sBe-d8CwwuXKEvnPzyNbLANLg88KhgeMzj3bB59KhCtY"/>
+<span class="absolute top-2 right-2 bg-tertiary text-on-tertiary px-2 py-0.5 rounded text-[10px] font-label-caps">PITCH EXPERT</span>
+</div>
+<h4 class="font-stat-md text-stat-md text-on-surface">P. CHAWLA</h4>
+<div class="flex justify-between text-on-surface-variant text-xs mt-2 font-label-caps">
+<span>ECON: 7.9</span>
+<span>WKT: 18</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Navigation Shell -->
+<nav class="fixed bottom-0 w-full flex justify-around items-center py-2 px-margin-mobile bg-surface-container-high border-t border-outline-variant shadow-lg z-50">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-tertiary transition-colors" onclick="window.parent.postMessage('NAV_MATCH', '*')">
+<span class="material-symbols-outlined">sports_cricket</span>
+<span class="font-label-caps text-label-caps">Match</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-tertiary transition-colors" onclick="window.parent.postMessage('NAV_CONSOLE', '*')">
+<span class="material-symbols-outlined">terminal</span>
+<span class="font-label-caps text-label-caps">Console</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 scale-90 transition-all" onclick="window.parent.postMessage('NAV_STRATEGY', '*')">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">map</span>
+<span class="font-label-caps text-label-caps">Strategy</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-tertiary transition-colors" onclick="window.parent.postMessage('NAV_HISTORY', '*')">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-caps text-label-caps">History</span>
+</button>
+</nav>
+<script>
+        function toggleToss(choice) {
+            const batBtn = document.getElementById('batFirstBtn');
+            const bowlBtn = document.getElementById('bowlFirstBtn');
+            const winProb = document.getElementById('winProb');
+            const winBar = document.getElementById('winBar');
+            const tossDetail = document.getElementById('tossDetail');
+
+            if (choice === 'bat') {
+                batBtn.classList.add('bg-tertiary', 'text-on-tertiary', 'shadow-lg');
+                batBtn.classList.remove('text-on-surface-variant');
+                bowlBtn.classList.remove('bg-tertiary', 'text-on-tertiary', 'shadow-lg');
+                bowlBtn.classList.add('text-on-surface-variant');
+                
+                winProb.innerText = '45%';
+                winBar.style.width = '45%';
+                winBar.className = 'bg-primary h-full transition-all duration-500';
+                winProb.className = 'font-stat-md text-primary';
+                tossDetail.innerText = "Historically difficult to defend scores at Wankhede under lights due to heavy dew formation.";
+            } else {
+                bowlBtn.classList.add('bg-tertiary', 'text-on-tertiary', 'shadow-lg');
+                bowlBtn.classList.remove('text-on-surface-variant');
+                batBtn.classList.remove('bg-tertiary', 'text-on-tertiary', 'shadow-lg');
+                batBtn.classList.add('text-on-surface-variant');
+                
+                winProb.innerText = '55%';
+                winBar.style.width = '55%';
+                winBar.className = 'bg-tertiary h-full transition-all duration-500';
+                winProb.className = 'font-stat-md text-tertiary';
+                tossDetail.innerText = "Chasing teams have a distinct advantage here, winning over 55% of night games in recent seasons.";
+            }
+        }
+    </script>
+</body></html>

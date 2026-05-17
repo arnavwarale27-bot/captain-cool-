@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Captain Cool | Immersive Command Console</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@400;600;700&family=Hanken+Grotesk:wght@400;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(22, 37, 57, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glow-red {
+            box-shadow: 0 0 15px rgba(187, 21, 34, 0.3);
+        }
+        .light-sweep {
+            position: relative;
+            overflow: hidden;
+        }
+        .light-sweep::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.03), transparent);
+            transform: rotate(45deg);
+            animation: sweep 6s infinite linear;
+        }
+        @keyframes sweep {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+        .pulsate-live {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.4; }
+            100% { opacity: 1; }
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #081425;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a3548;
+            border-radius: 10px;
+        }
+        
+        body {
+            overflow: hidden !important;
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        .agent-container {
+            backdrop-filter: blur(16px);
+            background: linear-gradient(135deg, rgba(30,41,59,0.7) 0%, rgba(15,23,42,0.9) 100%);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-tint": "#ffb3ae",
+                      "on-primary-fixed-variant": "#930014",
+                      "error": "#ffb4ab",
+                      "on-secondary": "#233148",
+                      "inverse-primary": "#bb1522",
+                      "tertiary-fixed": "#ffe16d",
+                      "tertiary": "#e9c400",
+                      "secondary-fixed-dim": "#b9c7e4",
+                      "outline-variant": "#5b403e",
+                      "surface-container-low": "#111c2d",
+                      "surface-dim": "#081425",
+                      "surface-container-lowest": "#040e1f",
+                      "on-error": "#690005",
+                      "error-container": "#93000a",
+                      "surface": "#081425",
+                      "on-tertiary-fixed": "#221b00",
+                      "primary-fixed-dim": "#ffb3ae",
+                      "on-primary": "#68000b",
+                      "inverse-surface": "#d8e3fb",
+                      "tertiary-container": "#c9a900",
+                      "on-tertiary-fixed-variant": "#544600",
+                      "on-background": "#d8e3fb",
+                      "outline": "#ab8886",
+                      "surface-variant": "#2a3548",
+                      "primary-fixed": "#ffdad7",
+                      "on-secondary-fixed": "#0d1c32",
+                      "secondary": "#b9c7e4",
+                      "surface-container-highest": "#2a3548",
+                      "surface-bright": "#2f3a4c",
+                      "secondary-fixed": "#d6e3ff",
+                      "on-primary-container": "#5c0008",
+                      "surface-container": "#152031",
+                      "on-surface": "#d8e3fb",
+                      "on-tertiary-container": "#4c3f00",
+                      "primary-container": "#ff5351",
+                      "background": "#081425",
+                      "on-surface-variant": "#e4bdba",
+                      "on-error-container": "#ffdad6",
+                      "on-secondary-container": "#abb9d6",
+                      "on-secondary-fixed-variant": "#39475f",
+                      "primary": "#ffb3ae",
+                      "surface-container-high": "#1f2a3c",
+                      "on-primary-fixed": "#410004",
+                      "secondary-container": "#3c4962",
+                      "tertiary-fixed-dim": "#e9c400",
+                      "on-tertiary": "#3a3000",
+                      "inverse-on-surface": "#263143"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "container-max": "1440px",
+                      "unit": "4px",
+                      "margin-desktop": "32px",
+                      "margin-mobile": "16px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Anton"],
+                      "headline-lg-mobile": ["Anton"],
+                      "display-xl": ["Anton"],
+                      "label-caps": ["Barlow Condensed"],
+                      "stat-md": ["Barlow Condensed"],
+                      "body-md": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                      "headline-lg": ["40px", {"lineHeight": "44px", "letterSpacing": "0.03em", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["32px", {"lineHeight": "36px", "fontWeight": "400"}],
+                      "display-xl": ["72px", {"lineHeight": "80px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "600"}],
+                      "stat-md": ["24px", {"lineHeight": "28px", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background font-body-md flex flex-col relative">
+
+<!-- Background Particle Layer for Aesthetic -->
+<div class="fixed inset-0 pointer-events-none opacity-20">
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary rounded-full mix-blend-screen filter blur-[100px] animate-pulse"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600 rounded-full mix-blend-screen filter blur-[100px] animate-pulse" style="animation-delay: 2s;"></div>
+</div>
+
+<!-- Top AppBar -->
+<header class="bg-surface-container/80 backdrop-blur-md flex justify-between items-center w-full px-margin-desktop h-16 border-b border-outline-variant z-50 shrink-0">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:bg-surface-bright/20 p-2 rounded-full transition-transform active:scale-95">menu</span>
+<h1 class="font-headline-lg text-headline-lg italic tracking-tighter text-inverse-primary uppercase drop-shadow-[0_0_10px_rgba(255,83,81,0.5)]">CAPTAIN COOL // NEURAL</h1>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<nav class="flex gap-6">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary transition-colors" href="#">Match</a>
+<a class="font-label-caps text-label-caps text-tertiary font-bold transition-colors border-b-2 border-tertiary pb-1" href="/" target="_parent">Orchestrator</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary transition-colors" href="/Analysis" target="_parent">Analysis</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary transition-colors" href="#">History</a>
+</nav>
+<div class="flex items-center gap-2 px-3 py-1 bg-error-container rounded-full border border-primary/20 pulsate-live shadow-[0_0_10px_rgba(255,83,81,0.3)]">
+<span class="w-2 h-2 bg-primary rounded-full"></span>
+<span class="font-label-caps text-label-caps text-primary tracking-widest">NETWORK LIVE</span>
+</div>
+</div>
+</header>
+
+<main class="flex flex-1 overflow-hidden h-[calc(100vh-64px)] z-10 relative">
+<!-- Left Sidebar: Match State Input -->
+<aside class="w-80 agent-container border-r border-outline-variant flex flex-col p-6 overflow-y-auto">
+<div class="mb-8">
+<h2 class="font-label-caps text-label-caps text-primary mb-4 border-l-2 border-primary pl-2 uppercase tracking-widest">Environment Telemetry</h2>
+<div class="space-y-4">
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps text-outline">STADIUM SELECTOR</label>
+<select id="venue" class="bg-surface-container-low border border-outline-variant rounded-lg p-2 font-body-md text-on-surface focus:ring-1 focus:ring-tertiary outline-none shadow-inner">
+<!--INJECT_VENUE_OPTION-->
+<option value="Wankhede Stadium, Mumbai">Wankhede Stadium, Mumbai</option>
+<option value="M. Chinnaswamy, Bangalore">M. Chinnaswamy, Bangalore</option>
+<option value="HPCA Stadium, Dharamsala">HPCA Stadium, Dharamsala</option>
+</select>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<div class="bg-surface-container/50 px-3 py-2 rounded-lg border border-outline-variant shadow-inner">
+<p class="font-label-caps text-label-caps text-outline">TEMP</p>
+<p class="font-stat-md text-stat-md text-on-surface">32°C</p>
+</div>
+<div class="bg-surface-container/50 px-3 py-2 rounded-lg border border-outline-variant shadow-inner">
+<p class="font-label-caps text-label-caps text-outline">HUMIDITY</p>
+<p class="font-stat-md text-stat-md text-on-surface">65%</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="mt-auto space-y-4">
+<h2 class="font-label-caps text-label-caps text-primary mb-2 border-l-2 border-primary pl-2 uppercase tracking-widest">Current Match State</h2>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="font-label-caps text-label-caps text-outline">RUNS</label>
+<input id="runs" class="w-full bg-surface-container-low border border-outline-variant rounded p-2 font-stat-md text-on-surface text-center focus:border-tertiary outline-none shadow-inner" type="number" value="142"/>
+</div>
+<div>
+<label class="font-label-caps text-label-caps text-outline">WICKETS</label>
+<input id="wickets" class="w-full bg-surface-container-low border border-outline-variant rounded p-2 font-stat-md text-on-surface text-center focus:border-tertiary outline-none shadow-inner" type="number" value="4"/>
+</div>
+</div>
+
+<!-- Strategy Trigger -->
+<button onclick="triggerMatrix()" class="mt-4 w-full h-16 bg-gradient-to-r from-blue-600 via-primary to-error-container rounded-xl flex items-center justify-center gap-4 group hover:scale-[1.02] transition-transform shadow-[0_0_20px_rgba(255,83,81,0.4)] relative overflow-hidden active:scale-95 cursor-pointer">
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
+<span class="font-label-caps text-label-caps text-white tracking-[0.3em] font-bold z-10 text-shadow">INITIALIZE NEURAL LOOP</span>
+<span class="material-symbols-outlined text-white group-hover:rotate-180 transition-transform duration-700 z-10">sync</span>
+</button>
+
+</div>
+</aside>
+
+<!-- Center: Multi-Agent Neural Terminal -->
+<section class="flex-1 flex flex-col p-6 gap-6 overflow-hidden relative">
+<div class="flex justify-between items-end mb-2">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-background uppercase drop-shadow">Multi-Agent Neural Network</h2>
+<p class="font-label-caps text-label-caps text-outline uppercase tracking-[0.2em] flex items-center gap-2">
+    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> 3 NODES ACTIVE
+</p>
+</div>
+</div>
+
+<!-- Neural Chat Terminal -->
+<div class="flex-1 agent-container rounded-xl overflow-hidden flex flex-col border border-primary/20 shadow-[0_0_40px_rgba(0,0,0,0.5)]">
+    
+    <!-- Status Header -->
+    <div class="bg-surface-dim px-6 py-3 border-b border-outline-variant flex justify-between items-center z-10">
+        <div class="flex gap-4">
+            <span class="text-[10px] font-mono text-blue-400 bg-blue-900/30 px-2 py-1 rounded border border-blue-500/30 flex gap-2 items-center"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> ANALYST</span>
+            <span class="text-[10px] font-mono text-yellow-500 bg-yellow-900/30 px-2 py-1 rounded border border-yellow-500/30 flex gap-2 items-center"><span class="w-1.5 h-1.5 rounded-full bg-yellow-500"></span> CAPTAIN</span>
+            <span class="text-[10px] font-mono text-red-500 bg-red-900/30 px-2 py-1 rounded border border-red-500/30 flex gap-2 items-center"><span class="w-1.5 h-1.5 rounded-full bg-red-500"></span> ADVOCATE</span>
+        </div>
+        <div id="loader" class="hidden flex gap-2 items-center">
+            <span class="text-[10px] font-mono text-tertiary mr-2">SYNTHESIZING...</span>
+            <div class="w-1.5 h-1.5 rounded-full bg-tertiary animate-bounce"></div>
+            <div class="w-1.5 h-1.5 rounded-full bg-tertiary animate-bounce" style="animation-delay: 0.1s"></div>
+            <div class="w-1.5 h-1.5 rounded-full bg-tertiary animate-bounce" style="animation-delay: 0.2s"></div>
+        </div>
+    </div>
+    
+    <!-- Chat Feed -->
+    <div class="flex-1 p-6 overflow-y-auto space-y-8 scroll-smooth relative" id="agent-feed">
+        <!-- Grid Background inside chat -->
+        <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none"></div>
+        
+        <!--INJECT_DEBATE-->
+        
+        <!-- Placeholder Welcome Message (Overwritten by backend if trigger=1) -->
+        <div class="flex items-start gap-4 transform transition-all duration-500">
+            <div class="w-10 h-10 rounded-lg bg-surface-container-high border border-outline flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-outline text-xl">terminal</span>
+            </div>
+            <div class="flex-1">
+                <p class="text-[11px] font-bold tracking-widest text-outline mb-1">SYSTEM_CORE // ORCHESTRATOR</p>
+                <div class="bg-surface-container/80 backdrop-blur-md p-4 rounded-r-xl rounded-bl-xl border border-outline/30 text-on-surface-variant text-sm font-mono shadow-lg">
+                    Neural agents are offline. Awaiting Match Telemetry to initiate strategy synthesis loop...
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</section>
+
+<!-- Right Sidebar: Final Tactical Output -->
+<aside class="w-96 agent-container border-l border-outline-variant flex flex-col p-6 overflow-y-auto relative shadow-[-20px_0_30px_rgba(0,0,0,0.5)] z-20">
+<h2 class="font-label-caps text-label-caps text-primary mb-6 border-l-2 border-primary pl-2 uppercase tracking-widest">Synthesized Blueprint</h2>
+
+<div class="flex-1 flex flex-col justify-center">
+    <div class="p-6 bg-surface-container border-t-4 border-tertiary rounded-xl shadow-[0_10px_30px_rgba(233,196,0,0.15)] relative light-sweep">
+        <div class="absolute -top-3 left-4 bg-tertiary text-on-tertiary px-3 py-1 rounded text-[10px] font-black tracking-widest shadow-md">
+            FINAL DIRECTIVE
+        </div>
+        <p id="blueprint-text" class="text-sm text-on-surface-variant leading-relaxed mt-4 font-mono">
+            <!--INJECT_BLUEPRINT-->
+            Waiting for Matrix Trigger...
+        </p>
+    </div>
+    
+    <div class="mt-8 border border-outline-variant/50 rounded-lg p-4 bg-surface-container-low/50">
+        <h3 class="font-label-caps text-label-caps text-outline mb-2 flex items-center gap-2">
+            <span class="material-symbols-outlined text-sm">verified_user</span> ORCHESTRATION INTEGRITY
+        </h3>
+        <div class="flex justify-between items-center text-xs font-mono">
+            <span class="text-on-surface-variant">Data Analysis:</span> <span class="text-green-400">PASSED</span>
+        </div>
+        <div class="flex justify-between items-center text-xs font-mono mt-1">
+            <span class="text-on-surface-variant">Tactical Formulation:</span> <span class="text-green-400">PASSED</span>
+        </div>
+        <div class="flex justify-between items-center text-xs font-mono mt-1">
+            <span class="text-on-surface-variant">Risk Audit:</span> <span class="text-green-400">PASSED</span>
+        </div>
+    </div>
+</div>
+
+</aside>
+</main>
+
+<script>
+        function triggerMatrix() {
+            const venue = document.getElementById('venue').value;
+            const runs = document.getElementById('runs').value;
+            const wickets = document.getElementById('wickets').value;
+            
+            // Show loaders in UI immediately
+            document.getElementById('loader').classList.remove('hidden');
+            
+            // Re-route parent Streamlit container to pass data in query params
+            window.parent.location.href = window.parent.location.pathname + `?trigger=1&venue=${encodeURIComponent(venue)}&runs=${runs}&wickets=${wickets}`;
+        }
+</script>
+</body>
+</html>

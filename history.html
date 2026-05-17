@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Captain Cool | History &amp; Analytics Archive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Barlow+Condensed:wght@400;600;700&amp;family=Hanken+Grotesk:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(22, 37, 57, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .agentic-glow-red {
+            box-shadow: 0 0 15px rgba(255, 83, 81, 0.2);
+        }
+        .agentic-glow-gold {
+            box-shadow: 0 0 15px rgba(233, 196, 0, 0.2);
+        }
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#690005",
+                        "secondary-fixed-dim": "#b9c7e4",
+                        "primary": "#ffb3ae",
+                        "on-tertiary-fixed-variant": "#544600",
+                        "secondary-container": "#3c4962",
+                        "on-primary-fixed": "#410004",
+                        "inverse-on-surface": "#263143",
+                        "tertiary-fixed-dim": "#e9c400",
+                        "on-secondary-fixed": "#0d1c32",
+                        "tertiary-fixed": "#ffe16d",
+                        "tertiary-container": "#c9a900",
+                        "secondary": "#b9c7e4",
+                        "error": "#ffb4ab",
+                        "inverse-primary": "#bb1522",
+                        "surface-container-highest": "#2a3548",
+                        "on-surface-variant": "#e4bdba",
+                        "surface-container-lowest": "#040e1f",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#221b00",
+                        "surface-container": "#152031",
+                        "on-surface": "#d8e3fb",
+                        "primary-container": "#ff5351",
+                        "primary-fixed-dim": "#ffb3ae",
+                        "secondary-fixed": "#d6e3ff",
+                        "on-tertiary-container": "#4c3f00",
+                        "surface-container-high": "#1f2a3c",
+                        "on-primary-container": "#5c0008",
+                        "on-tertiary": "#3a3000",
+                        "outline-variant": "#5b403e",
+                        "primary-fixed": "#ffdad7",
+                        "surface-tint": "#ffb3ae",
+                        "surface-container-low": "#111c2d",
+                        "inverse-surface": "#d8e3fb",
+                        "on-secondary-container": "#abb9d6",
+                        "on-background": "#d8e3fb",
+                        "error-container": "#93000a",
+                        "tertiary": "#e9c400",
+                        "surface-dim": "#081425",
+                        "outline": "#ab8886",
+                        "on-primary-fixed-variant": "#930014",
+                        "surface-bright": "#2f3a4c",
+                        "on-secondary-fixed-variant": "#39475f",
+                        "on-primary": "#68000b",
+                        "background": "#081425",
+                        "on-secondary": "#233148",
+                        "surface-variant": "#2a3548",
+                        "surface": "#081425"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "container-max": "1440px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "stat-md": ["Barlow Condensed"],
+                        "headline-lg": ["Anton"],
+                        "label-caps": ["Barlow Condensed"],
+                        "display-xl": ["Anton"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Anton"]
+                    },
+                    "fontSize": {
+                        "stat-md": ["24px", {"lineHeight": "28px", "fontWeight": "700"}],
+                        "headline-lg": ["40px", {"lineHeight": "44px", "letterSpacing": "0.03em", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "600"}],
+                        "display-xl": ["72px", {"lineHeight": "80px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "36px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden min-h-screen pb-24">
+<!-- Top Navigation Bar -->
+<header class="bg-surface-container docked full-width top-0 z-50 border-b border-outline-variant flex justify-between items-center w-full px-margin-mobile h-16 sticky">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer">menu</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile italic tracking-tighter text-inverse-primary">CAPTAIN COOL</h1>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<nav class="flex gap-6">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary transition-colors" href="#">MATCH</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary transition-colors" href="#">CONSOLE</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary transition-colors" href="#">STRATEGY</a>
+<a class="font-label-caps text-label-caps text-tertiary font-bold" href="#">HISTORY</a>
+</nav>
+<span class="material-symbols-outlined text-primary">bolt</span>
+</div>
+<div class="md:hidden">
+<span class="material-symbols-outlined text-primary">bolt</span>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 grid grid-cols-12 gap-gutter">
+<!-- Search & Filter Header -->
+<section class="col-span-12 mb-4">
+<div class="glass-card p-6 rounded-lg flex flex-col md:flex-row gap-4 items-center justify-between">
+<div class="w-full md:max-w-md relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border border-outline px-12 py-3 font-label-caps text-label-caps focus:border-tertiary focus:ring-0 text-on-surface placeholder:text-on-surface-variant/50 transition-all outline-none" placeholder="SEARCH PLAYERS, TEAMS OR VENUES..." type="text"/>
+</div>
+<div class="flex gap-3 overflow-x-auto no-scrollbar w-full md:w-auto">
+<button class="bg-primary-container text-on-primary-container px-6 py-2 font-label-caps text-label-caps rounded-sm flex-shrink-0">ALL SEASONS</button>
+<button class="border border-outline text-on-surface px-6 py-2 font-label-caps text-label-caps rounded-sm hover:bg-surface-variant/30 flex-shrink-0">T20 WORLD CUP</button>
+<button class="border border-outline text-on-surface px-6 py-2 font-label-caps text-label-caps rounded-sm hover:bg-surface-variant/30 flex-shrink-0">IPL 2024</button>
+</div>
+</div>
+</section>
+<!-- Head to Head Stats -->
+<section class="col-span-12 lg:col-span-8">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant mb-3 tracking-widest">HEAD-TO-HEAD ARCHIVE: MUMBAI VS CHENNAI</h2>
+<div class="glass-card rounded-lg overflow-hidden border-l-4 border-primary">
+<div class="p-6 grid grid-cols-3 items-center text-center">
+<div>
+<div class="font-headline-lg text-headline-lg text-on-surface mb-1">MI</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">MUMBAI INDIANS</div>
+<div class="mt-4 flex justify-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="w-2 h-2 rounded-full bg-on-surface-variant/20"></span>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="w-2 h-2 rounded-full bg-on-surface-variant/20"></span>
+</div>
+</div>
+<div class="relative">
+<div class="font-display-xl text-display-xl opacity-10 absolute inset-0 flex items-center justify-center -z-10">VS</div>
+<div class="font-stat-md text-stat-md text-tertiary">32 MATCHES</div>
+<div class="flex flex-col gap-1 mt-2">
+<div class="h-2 bg-surface-container-highest w-full rounded-full overflow-hidden flex">
+<div class="bg-primary h-full" style="width: 60%"></div>
+<div class="bg-tertiary h-full" style="width: 40%"></div>
+</div>
+<div class="flex justify-between font-label-caps text-[10px] text-on-surface-variant">
+<span>19 WINS</span>
+<span>13 WINS</span>
+</div>
+</div>
+</div>
+<div>
+<div class="font-headline-lg text-headline-lg text-tertiary mb-1">CSK</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">CHENNAI SUPER KINGS</div>
+<div class="mt-4 flex justify-center gap-1">
+<span class="w-2 h-2 rounded-full bg-on-surface-variant/20"></span>
+<span class="w-2 h-2 rounded-full bg-on-surface-variant/20"></span>
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="w-2 h-2 rounded-full bg-on-surface-variant/20"></span>
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+</div>
+</div>
+</div>
+<!-- Detailed Breakdown -->
+<div class="bg-surface-container-low/50 p-4 border-t border-outline-variant grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="text-center">
+<div class="font-label-caps text-label-caps text-on-surface-variant">AVG INN SCORE</div>
+<div class="font-stat-md text-stat-md text-on-surface">172.5 / 168.2</div>
+</div>
+<div class="text-center">
+<div class="font-label-caps text-label-caps text-on-surface-variant">POWERPLAY AVG</div>
+<div class="font-stat-md text-stat-md text-on-surface">48.2 / 45.9</div>
+</div>
+<div class="text-center">
+<div class="font-label-caps text-label-caps text-on-surface-variant">WICKET PHASE</div>
+<div class="font-stat-md text-stat-md text-on-surface">12.4 / 15.1</div>
+</div>
+<div class="text-center">
+<div class="font-label-caps text-label-caps text-on-surface-variant">TOSS WIN %</div>
+<div class="font-stat-md text-stat-md text-tertiary">54.2%</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Venue Analytics -->
+<section class="col-span-12 lg:col-span-4">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant mb-3 tracking-widest">VENUE ANALYTICS: WANKHEDE</h2>
+<div class="glass-card rounded-lg h-[240px] relative overflow-hidden group">
+<img alt="Wankhede Stadium" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700" data-alt="A high-angle cinematic view of a massive cricket stadium at night during a live match. The field is glowing brilliant emerald green under intense white floodlights. Tens of thousands of fans fill the stands, creating a sea of movement. The atmosphere is electric and high-octane, captured in a dark-mode stadium professional aesthetic with deep navy shadows and sharp high-contrast highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnYwVaFICIQ15WR0RF-BGi8Au4egeJmmt6BqIvNL8fxTR2fmp9W2pdsDu-uRtfP25oOMg_PHyGyNgRy-4MTnU31UdlVrHqvXHKdtwNZR443KhiFmh9xqtmYE9E6PhspAFV4cAcB4cErKoL55YYYmqdz3JQr8MkaSsViGkHSHpDVjVxRaSSkbCUK7c56Ln0OsmGbmfr0D-rBRW0KEipc2a3zj3EnG7ECEi_Fb3XmxMV5nQOJVtn1ULt6X-QgUOtl5iWdmKxPAdYZm8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4">
+<div class="flex justify-between items-end">
+<div>
+<div class="font-headline-lg text-headline-lg leading-none">WANKHEDE</div>
+<div class="font-label-caps text-label-caps text-tertiary">MUMBAI, INDIA</div>
+</div>
+<div class="text-right">
+<div class="font-stat-md text-stat-md text-primary">BAT FIRST 42%</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">BOWL FIRST 58%</div>
+</div>
+</div>
+</div>
+</div>
+<div class="glass-card mt-4 rounded-lg p-4 grid grid-cols-2 gap-4">
+<div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">PACERS WICKETS</div>
+<div class="font-stat-md text-stat-md">68% <span class="material-symbols-outlined text-[14px] text-primary align-middle">trending_up</span></div>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">SPINNERS WICKETS</div>
+<div class="font-stat-md text-stat-md">32% <span class="material-symbols-outlined text-[14px] text-tertiary align-middle">trending_down</span></div>
+</div>
+</div>
+</section>
+<!-- Player Profile Cards (Bento Style) -->
+<section class="col-span-12 mt-4">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant mb-6 tracking-widest text-center">ELITE PERFORMANCE ARCHIVE</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Player 1 -->
+<div class="glass-card rounded-lg overflow-hidden flex flex-col agentic-glow-gold">
+<div class="h-2 bg-tertiary"></div>
+<div class="p-6 flex gap-4">
+<div class="w-20 h-20 rounded-lg bg-surface-container-highest overflow-hidden flex-shrink-0 border border-outline-variant">
+<img alt="Player Portrait" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all" data-alt="A sharp, dramatic studio portrait of a professional athlete looking intense and focused. The lighting is high-contrast rim lighting, emphasizing muscle structure and determination. The background is a solid deep navy, maintaining the dark-mode Stadium Professional aesthetic. The overall mood is commanding and high-stakes, fitting for a elite sports data command center." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi1uXkI-fneBd-bx-xEUZRdVzMrKaocyHubfl3L7JzXwdcrQSjbNeW25ObO0qeADuTcwwkj6GwcnLo1bmNYpBxRw0g3H7n_8qUEeD34Y3XODVzisEda-wmtJaZt999ZCFf-o1omXuXoG1h37GCLy8xlOIyGF2w5RnjZcDPlr_VVCvlsXAnnyGz4yU9amcewOQB9CC-JUDY1YIw3__V9lQ7T10YbjG-ecj4aYNQMZbsMCMpFeDLETsWwfAPMQajKNMLIXAc4nGQDHE"/>
+</div>
+<div class="flex-grow">
+<div class="font-label-caps text-label-caps text-tertiary">BATSMAN | CAPTAIN</div>
+<div class="font-headline-lg text-headline-lg leading-tight">ROHIT SHARMA</div>
+<div class="flex gap-2 mt-1">
+<span class="bg-surface-variant text-on-surface-variant px-2 py-0.5 rounded-sm font-label-caps text-[10px]">PULL SHOT ELITE</span>
+<span class="bg-surface-variant text-on-surface-variant px-2 py-0.5 rounded-sm font-label-caps text-[10px]">OPENER</span>
+</div>
+</div>
+</div>
+<div class="px-6 pb-6 grid grid-cols-3 gap-2 border-t border-outline-variant/30 pt-4 mt-auto">
+<div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">S/R</div>
+<div class="font-stat-md text-stat-md">148.2</div>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">AVG</div>
+<div class="font-stat-md text-stat-md">32.4</div>
+</div>
+<div class="bg-surface-container-highest/50 p-1 rounded text-center">
+<div class="font-label-caps text-label-caps text-tertiary">CLUTCH</div>
+<div class="font-stat-md text-stat-md text-tertiary">8.8/10</div>
+</div>
+</div>
+</div>
+<!-- Player 2 -->
+<div class="glass-card rounded-lg overflow-hidden flex flex-col border-l-4 border-primary">
+<div class="h-2 bg-primary"></div>
+<div class="p-6 flex gap-4">
+<div class="w-20 h-20 rounded-lg bg-surface-container-highest overflow-hidden flex-shrink-0 border border-outline-variant">
+<img alt="Player Portrait" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all" data-alt="A professional studio headshot of a concentrated athlete with dramatic shadows. The lighting is low-key, highlighting facial features with a cool blue and sharp white rim light. The style is athletic-commercial, conveying peak physical performance and analytical focus. The background is dark and textured, reinforcing the high-octane dugout environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjcVHc7LgeL5EusMtyG9JDxfOmQ41lmkpDgMI--apU5GN5_dm9sdQS55gdm9CsrHpWaTZCCWzNTG2bdl9_GIZByTziz0LRfbpI7oe9npQd5d2heTr8tCPmWEcsP6ERESMlXQyVkx2LYr4qidR2GpJg81-HrahSOwCtsG295pUnZd5y648l3d0J13kZoxIlVcHm51L5lzxKjteHmuFDYW-yf-lpKLA9KtG_SDCFrFF1nck_7FMqPDbVBz4ml3FQd4aXs3wLSGAHcT8"/>
+</div>
+<div class="flex-grow">
+<div class="font-label-caps text-label-caps text-primary">BOWLER | PACE</div>
+<div class="font-headline-lg text-headline-lg leading-tight">JASPRIT BUMRAH</div>
+<div class="flex gap-2 mt-1">
+<span class="bg-surface-variant text-on-surface-variant px-2 py-0.5 rounded-sm font-label-caps text-[10px]">YORKER KING</span>
+<span class="bg-surface-variant text-on-surface-variant px-2 py-0.5 rounded-sm font-label-caps text-[10px]">DEATH OVERS</span>
+</div>
+</div>
+</div>
+<div class="px-6 pb-6 grid grid-cols-3 gap-2 border-t border-outline-variant/30 pt-4 mt-auto">
+<div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">ECON</div>
+<div class="font-stat-md text-stat-md">6.74</div>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">WKTS</div>
+<div class="font-stat-md text-stat-md">158</div>
+</div>
+<div class="bg-surface-container-highest/50 p-1 rounded text-center">
+<div class="font-label-caps text-label-caps text-primary">CLUTCH</div>
+<div class="font-stat-md text-stat-md text-primary">9.5/10</div>
+</div>
+</div>
+</div>
+<!-- Player 3 -->
+<div class="glass-card rounded-lg overflow-hidden flex flex-col">
+<div class="h-2 bg-on-surface-variant/20"></div>
+<div class="p-6 flex gap-4">
+<div class="w-20 h-20 rounded-lg bg-surface-container-highest overflow-hidden flex-shrink-0 border border-outline-variant">
+<img alt="Player Portrait" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all" data-alt="A moody, high-end athletic portrait in a dark studio. The subject has a determined expression, lit with a singular strong light source from the side that creates deep tactical shadows. The color palette is restricted to deep blacks, grays, and subtle gold tones. The visual quality is cinematic and sharp, reflecting the high-stakes analytical nature of elite cricket management." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnIHh19sxYcKrJyMedCZmP5QU5GPJXWblmHiexP7AWSM0li_95bo2Mi9t_9e_LiZERr5lqjRjnPyDmxR7at9-N30Ahl6xtJ31MbW19SbcnKCugFlUDSXlDQsMRW783uKdnFnDx6n2zgfnMszLt3hd-XyJ10lte5nBZ5McVHmbZcwhZMZZuxEIrYOvhzmqkMfKr9YZSLiDOK24sEjZJ5VKi4_v8mTj-hDEH4-_iJkN5gFTvMG3nZWhXBjFL1HuPRDeh9KDQn7rwML4"/>
+</div>
+<div class="flex-grow">
+<div class="font-label-caps text-label-caps text-on-surface-variant">ALL-ROUNDER</div>
+<div class="font-headline-lg text-headline-lg leading-tight">HARDIK PANDYA</div>
+<div class="flex gap-2 mt-1">
+<span class="bg-surface-variant text-on-surface-variant px-2 py-0.5 rounded-sm font-label-caps text-[10px]">POWER HITTER</span>
+<span class="bg-surface-variant text-on-surface-variant px-2 py-0.5 rounded-sm font-label-caps text-[10px]">FINISHER</span>
+</div>
+</div>
+</div>
+<div class="px-6 pb-6 grid grid-cols-3 gap-2 border-t border-outline-variant/30 pt-4 mt-auto">
+<div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">S/R</div>
+<div class="font-stat-md text-stat-md">152.1</div>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">AVG</div>
+<div class="font-stat-md text-stat-md">28.9</div>
+</div>
+<div class="bg-surface-container-highest/50 p-1 rounded text-center">
+<div class="font-label-caps text-label-caps text-on-surface-variant">CLUTCH</div>
+<div class="font-stat-md text-stat-md">7.4/10</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Mandatory Shared Component) -->
+<nav class="fixed bottom-0 w-full flex justify-around items-center py-2 px-margin-mobile bg-surface-container-high border-t border-outline-variant shadow-lg z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-tertiary transition-colors scale-90" href="javascript:void(0)" onclick="window.parent.postMessage('NAV_MATCH', '*')">
+<span class="material-symbols-outlined">sports_cricket</span>
+<span class="font-label-caps text-label-caps">Match</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-tertiary transition-colors scale-90" href="javascript:void(0)" onclick="window.parent.postMessage('NAV_CONSOLE', '*')">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<span class="font-label-caps text-label-caps">Console</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-tertiary transition-colors scale-90" href="javascript:void(0)" onclick="window.parent.postMessage('NAV_STRATEGY', '*')">
+<span class="material-symbols-outlined">map</span>
+<span class="font-label-caps text-label-caps">Strategy</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 scale-95 transition-all duration-150" href="javascript:void(0)" onclick="window.parent.postMessage('NAV_HISTORY', '*')">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-caps text-label-caps">History</span>
+</a>
+</nav>
+<!-- Interactive script for some hover effects -->
+<script>
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-2px)';
+                card.style.transition = 'all 0.3s ease';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body></html>

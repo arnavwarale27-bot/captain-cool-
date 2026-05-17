@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Captain Cool | Analytics Pro Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Barlow+Condensed:wght@400;600;700&amp;family=Hanken+Grotesk:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #081425;
+            color: #d8e3fb;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(22, 37, 57, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .stadium-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% -20%, #162539 0%, #081425 70%);
+            z-index: -1;
+        }
+        .ipl-gradient-red {
+            background: linear-gradient(180deg, #ff5351 0%, #bb1522 100%);
+        }
+        .action-glow {
+            box-shadow: 0 0 20px rgba(233, 196, 0, 0.2);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        @keyframes pulse-red {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        .live-dot {
+            animation: pulse-red 2s infinite;
+        }
+    </style>
+<!-- Tailwind Config Injection -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-error": "#690005",
+                "secondary-fixed-dim": "#b9c7e4",
+                "primary": "#ffb3ae",
+                "on-tertiary-fixed-variant": "#544600",
+                "secondary-container": "#3c4962",
+                "on-primary-fixed": "#410004",
+                "inverse-on-surface": "#263143",
+                "tertiary-fixed-dim": "#e9c400",
+                "on-secondary-fixed": "#0d1c32",
+                "tertiary-fixed": "#ffe16d",
+                "tertiary-container": "#c9a900",
+                "secondary": "#b9c7e4",
+                "error": "#ffb4ab",
+                "inverse-primary": "#bb1522",
+                "surface-container-highest": "#2a3548",
+                "on-surface-variant": "#e4bdba",
+                "surface-container-lowest": "#040e1f",
+                "on-error-container": "#ffdad6",
+                "on-tertiary-fixed": "#221b00",
+                "surface-container": "#152031",
+                "on-surface": "#d8e3fb",
+                "primary-container": "#ff5351",
+                "primary-fixed-dim": "#ffb3ae",
+                "secondary-fixed": "#d6e3ff",
+                "on-tertiary-container": "#4c3f00",
+                "surface-container-high": "#1f2a3c",
+                "on-primary-container": "#5c0008",
+                "on-tertiary": "#3a3000",
+                "outline-variant": "#5b403e",
+                "primary-fixed": "#ffdad7",
+                "surface-tint": "#ffb3ae",
+                "surface-container-low": "#111c2d",
+                "inverse-surface": "#d8e3fb",
+                "on-secondary-container": "#abb9d6",
+                "on-background": "#d8e3fb",
+                "error-container": "#93000a",
+                "tertiary": "#e9c400",
+                "surface-dim": "#081425",
+                "outline": "#ab8886",
+                "on-primary-fixed-variant": "#930014",
+                "surface-bright": "#2f3a4c",
+                "on-secondary-fixed-variant": "#39475f",
+                "on-primary": "#68000b",
+                "background": "#081425",
+                "on-secondary": "#233148",
+                "surface-variant": "#2a3548",
+                "surface": "#081425"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "spacing": {
+                "margin-desktop": "32px",
+                "container-max": "1440px",
+                "gutter": "16px",
+                "unit": "4px",
+                "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                "stat-md": ["Barlow Condensed"],
+                "headline-lg": ["Anton"],
+                "label-caps": ["Barlow Condensed"],
+                "display-xl": ["Anton"],
+                "body-md": ["Hanken Grotesk"],
+                "headline-lg-mobile": ["Anton"]
+            },
+            "fontSize": {
+                "stat-md": ["24px", {"lineHeight": "28px", "fontWeight": "700"}],
+                "headline-lg": ["40px", {"lineHeight": "44px", "letterSpacing": "0.03em", "fontWeight": "400"}],
+                "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "600"}],
+                "display-xl": ["72px", {"lineHeight": "80px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "headline-lg-mobile": ["32px", {"lineHeight": "36px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased font-body-md bg-background">
+<div class="stadium-glow"></div>
+<!-- Top App Bar -->
+<header class="fixed top-0 z-[60] w-full flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 bg-surface-container border-b border-outline-variant h-16">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary hover:bg-surface-bright/20 p-2 rounded-full transition-all">menu</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile italic tracking-tighter text-inverse-primary">CAPTAIN COOL</h1>
+</div>
+<div class="hidden md:flex gap-8">
+<button class="font-label-caps text-label-caps text-tertiary font-bold hover:bg-surface-bright/20 px-3 py-1 rounded transition-all">ANALYTICS</button>
+<button class="font-label-caps text-label-caps text-on-surface-variant hover:bg-surface-bright/20 px-3 py-1 rounded transition-all">SQUAD</button>
+<button class="font-label-caps text-label-caps text-on-surface-variant hover:bg-surface-bright/20 px-3 py-1 rounded transition-all">TACTICS</button>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1 bg-error-container rounded-full">
+<span class="live-dot w-2 h-2 bg-error rounded-full"></span>
+<span class="font-label-caps text-label-caps text-on-error-container uppercase">Live Match</span>
+</div>
+<button class="material-symbols-outlined text-primary hover:scale-95 transition-transform">bolt</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Win Probability Chart (Hero Section) -->
+<section class="col-span-12 lg:col-span-8 glass-panel p-6 rounded-xl relative overflow-hidden group">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="font-label-caps text-label-caps text-tertiary uppercase mb-1">Win Probability</h2>
+<div class="font-display-xl text-[48px] md:text-display-xl leading-none">64.2% <span class="text-stat-md font-stat-md text-primary align-top">+4.1%</span></div>
+</div>
+<div class="flex gap-2">
+<div class="w-10 h-10 rounded ipl-gradient-red flex items-center justify-center font-bold text-white shadow-lg">CC</div>
+<div class="w-10 h-10 rounded bg-secondary flex items-center justify-center font-bold text-on-secondary">Opp</div>
+</div>
+</div>
+<div class="h-64 w-full relative flex items-end gap-1">
+<!-- Faux interactive chart visualization -->
+<svg class="absolute inset-0 w-full h-full" preserveaspectratio="none" viewbox="0 0 100 100">
+<path d="M0 80 Q 10 70, 20 75 T 40 60 T 60 40 T 80 45 T 100 20" fill="none" stroke="#ffb3ae" stroke-width="3"></path>
+<path d="M0 80 Q 10 70, 20 75 T 40 60 T 60 40 T 80 45 T 100 20 L 100 100 L 0 100 Z" fill="url(#grad)" opacity="0.1"></path>
+<defs>
+<lineargradient id="grad" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#ffb3ae;stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:#ffb3ae;stop-opacity:0"></stop>
+</lineargradient>
+</defs>
+<!-- Active Point Marker -->
+<circle class="animate-pulse" cx="80" cy="45" fill="#e9c400" r="4"></circle>
+</svg>
+<!-- Over markers -->
+<div class="absolute bottom-0 w-full flex justify-between px-2 font-label-caps text-[10px] text-on-surface-variant">
+<span>0 OV</span><span>5 OV</span><span>10 OV</span><span>15 OV</span><span>20 OV</span>
+</div>
+</div>
+<div class="mt-4 flex gap-4">
+<span class="flex items-center gap-1 font-label-caps text-label-caps text-on-surface-variant"><span class="w-2 h-2 rounded-full bg-primary"></span> CAPTAIN COOL</span>
+<span class="flex items-center gap-1 font-label-caps text-label-caps text-on-surface-variant"><span class="w-2 h-2 rounded-full bg-secondary"></span> OPPOSITION</span>
+</div>
+</section>
+<!-- Key Performance Ratios -->
+<section class="col-span-12 lg:col-span-4 flex flex-col gap-gutter">
+<div class="glass-panel p-6 rounded-xl flex-1 border-l-4 border-primary">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-4">Required Run Rate</h3>
+<div class="flex items-end justify-between">
+<div class="font-stat-md text-stat-md text-on-surface">11.45</div>
+<div class="w-24 h-2 bg-surface-variant rounded-full overflow-hidden">
+<div class="w-3/4 h-full ipl-gradient-red"></div>
+</div>
+</div>
+<p class="font-label-caps text-[10px] text-primary mt-2 uppercase">Critical: High Pressure Zone</p>
+</div>
+<div class="glass-panel p-6 rounded-xl flex-1 border-l-4 border-tertiary">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-4">Boundary Percentage</h3>
+<div class="flex items-end justify-between">
+<div class="font-stat-md text-stat-md text-tertiary">18.2%</div>
+<div class="w-24 h-2 bg-surface-variant rounded-full overflow-hidden">
+<div class="w-1/2 h-full bg-tertiary"></div>
+</div>
+</div>
+<p class="font-label-caps text-[10px] text-on-surface-variant mt-2 uppercase">Target: 22% for Win Zone</p>
+</div>
+</section>
+<!-- Tactical Outcome Probabilities -->
+<section class="col-span-12 md:col-span-5 glass-panel p-6 rounded-xl">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-label-caps text-label-caps text-primary uppercase">Tactical AI Engine</h3>
+<span class="material-symbols-outlined text-primary text-sm">psychology</span>
+</div>
+<div class="space-y-4">
+<div class="p-4 rounded bg-surface-container-highest border border-white/5 flex items-center justify-between hover:bg-surface-bright/20 transition-all cursor-pointer">
+<div>
+<div class="font-label-caps text-label-caps text-tertiary">Bouncer Strategy</div>
+<div class="text-sm font-body-md text-on-surface">Target short rib-cage area</div>
+</div>
+<div class="text-right">
+<div class="font-stat-md text-stat-md text-primary">64%</div>
+<div class="font-label-caps text-[10px] text-on-surface-variant uppercase">Wicket Chance</div>
+</div>
+</div>
+<div class="p-4 rounded bg-surface-container-highest border border-white/5 flex items-center justify-between hover:bg-surface-bright/20 transition-all cursor-pointer">
+<div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">Spin Choke</div>
+<div class="text-sm font-body-md text-on-surface">Slower ball wide of crease</div>
+</div>
+<div class="text-right">
+<div class="font-stat-md text-stat-md text-on-surface-variant">42%</div>
+<div class="font-label-caps text-[10px] text-on-surface-variant uppercase">Dot Ball Prob</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Player Matchup Heatmap -->
+<section class="col-span-12 md:col-span-7 glass-panel p-6 rounded-xl relative">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-6">Pitch Heatmap: Batsman Weak Zones</h3>
+<div class="flex gap-4">
+<div class="flex-1 aspect-[3/4] rounded bg-surface-container-lowest border border-outline-variant relative overflow-hidden">
+<img class="absolute inset-0 w-full h-full object-cover opacity-20 grayscale" data-alt="A cinematic overhead view of a high-tech cricket pitch glowing under stadium floodlights at night. The surface is overlaid with a digital heat map grid displaying vibrant pulses of red and orange in the 'corridor of uncertainty' area. The overall aesthetic is dark, tactical, and advanced sports analytics with a professional broadcast feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXo8SNaSpqGOvpT5zB8qSQ5BaE9wQpDGqK2TpBQsLE5pFD8HrmX7kESoVISBAWwRz4erhWCcKdVmWNHOujEfpHLL9699-7ZyU3_3aHewSDd2OS5r3wLvg0t4I8cETqlWsL6HnmOFMRnV6umx3fDJXT-ods8gHec8a8mb2I-8vo5dQ9XpJIHGh13Y-6WVlclOw9h4vyXk4z0RRMK0ep1pzrEPrcYsqfbd9AlAptNCoedi-zh7aBsLNZmDfINiOEkEe020xPA92QMSA"/>
+<!-- Heatmap Gradients -->
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/40 via-transparent to-tertiary/20 mix-blend-screen"></div>
+<div class="absolute top-1/4 left-1/3 w-16 h-16 bg-primary blur-3xl opacity-60 rounded-full animate-pulse"></div>
+<div class="absolute bottom-1/4 right-1/4 w-20 h-20 bg-tertiary blur-3xl opacity-40 rounded-full"></div>
+<!-- Overlay Labels -->
+<div class="absolute inset-0 grid grid-cols-3 grid-rows-4 text-[8px] font-label-caps text-on-surface-variant/50 p-2">
+<div class="border border-white/5 flex items-center justify-center">OFF</div>
+<div class="border border-white/5 flex items-center justify-center">STUMP</div>
+<div class="border border-white/5 flex items-center justify-center">LEG</div>
+<div class="border border-white/5 col-span-3"></div>
+<div class="border border-white/5 col-span-3"></div>
+<div class="border border-white/5 col-span-3"></div>
+</div>
+</div>
+<div class="w-32 flex flex-col gap-4">
+<div class="text-center p-2 rounded bg-surface-container border border-outline-variant">
+<div class="font-label-caps text-[10px] text-on-surface-variant">STRIKER</div>
+<div class="font-stat-md text-[18px]">V. KOHLI</div>
+</div>
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-[10px]">Short</span>
+<span class="font-label-caps text-primary">High</span>
+</div>
+<div class="w-full h-1 bg-surface-container rounded-full"><div class="w-4/5 h-full bg-primary rounded-full"></div></div>
+</div>
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-[10px]">Yorker</span>
+<span class="font-label-caps text-on-surface-variant">Low</span>
+</div>
+<div class="w-full h-1 bg-surface-container rounded-full"><div class="w-1/4 h-full bg-on-surface-variant rounded-full"></div></div>
+</div>
+<button class="mt-auto ipl-gradient-red text-white py-2 rounded font-label-caps text-label-caps uppercase tracking-widest hover:scale-95 transition-transform active:scale-90">Change Attack</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mandatory Shared Component) -->
+<nav class="fixed bottom-0 w-full flex justify-around items-center py-2 px-margin-mobile bg-surface-container-high border-t border-outline-variant shadow-lg z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-tertiary transition-colors scale-90" href="javascript:void(0)" onclick="window.parent.postMessage('NAV_MATCH', '*')">
+<span class="material-symbols-outlined">sports_cricket</span>
+<span class="font-label-caps text-label-caps">Match</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 scale-95 transition-all duration-150" href="javascript:void(0)" onclick="window.parent.postMessage('NAV_CONSOLE', '*')">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<span class="font-label-caps text-label-caps">Console</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-tertiary transition-colors scale-90" href="javascript:void(0)" onclick="window.parent.postMessage('NAV_STRATEGY', '*')">
+<span class="material-symbols-outlined">map</span>
+<span class="font-label-caps text-label-caps">Strategy</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-tertiary transition-colors scale-90" href="javascript:void(0)" onclick="window.parent.postMessage('NAV_HISTORY', '*')">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-caps text-label-caps">History</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions for glass panels
+        document.querySelectorAll('.glass-panel').forEach(panel => {
+            panel.addEventListener('mousemove', (e) => {
+                const rect = panel.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                panel.style.setProperty('--mouse-x', `${x}px`);
+                panel.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // Atmospheric ticker update simulation
+        setInterval(() => {
+            const prob = document.querySelector('.font-display-xl span');
+            if (prob) {
+                const change = (Math.random() * 0.4 - 0.2).toFixed(1);
+                prob.textContent = (parseFloat(change) >= 0 ? '+' : '') + change + '%';
+            }
+        }, 3000);
+    </script>
+</body></html>
