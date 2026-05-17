@@ -31,17 +31,6 @@ pip install -r requirements.txt
 ```
 *(Ensure you have installed `streamlit`, `google-adk`, `google-genai`, `pandas`, and `numpy`)*
 
-3. **Configure API Keys**
-Create a directory named `.streamlit/` and inside it, create a `secrets.toml` file to securely store your Gemini API Key:
-```toml
-# .streamlit/secrets.toml
-GEMINI_API_KEY = "your_actual_api_key_here"
-```
-
-4. **Initialize the Console**
-```bash
-streamlit run app.py
-```
 
 ## 🛡️ Security
 Do not commit your `.streamlit/secrets.toml` file. It is explicitly ignored in `.gitignore` to prevent API key leaks.
